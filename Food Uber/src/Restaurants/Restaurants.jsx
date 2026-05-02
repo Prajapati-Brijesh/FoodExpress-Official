@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../config";
 import './Restaurants.css';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 const CUISINES = ['All','North Indian','South Indian','Chinese','Fast Food','Pizza','Continental','Mughlai','Street Food'];
 
 export default function Restaurants() {

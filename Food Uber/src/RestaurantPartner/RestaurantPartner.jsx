@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../config";
 import './RestaurantPartner.css';
 import ImageUpload from '../components/ImageUpload';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 const CUISINES = ['North Indian','South Indian','Chinese','Fast Food','Pizza','Continental','Mughlai','Street Food','Multi-cuisine','Bakery','Beverages'];
 
 const EMPTY = {

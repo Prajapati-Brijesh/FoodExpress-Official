@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../../config";
 import ImageUpload from '../../components/ImageUpload';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 const CUISINES = ['North Indian','South Indian','Chinese','Fast Food','Pizza','Continental','Mughlai','Street Food','Multi-cuisine'];
 
 const EMPTY_R = { name:'', address:'', phone:'', logo:'', banner:'', cuisine:'Multi-cuisine', rating:4.0, deliveryTime:30, minOrder:100, timing:'9 AM - 10 PM' };

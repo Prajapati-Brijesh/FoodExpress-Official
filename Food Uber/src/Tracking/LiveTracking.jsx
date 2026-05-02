@@ -6,7 +6,8 @@ import "./LiveTracking.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../config";
 import { Modal, Form, Button } from "react-bootstrap";
 
 // ─── Fix default Leaflet icons ────────────────────────────────────────────────
@@ -148,7 +149,7 @@ export default function LiveTracking() {
 
     const pollStatus = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/get-order/${deliveryInfo.orderId}/`);
+        const response = await fetch(`${API_BASE_URL}/api/get-order/${deliveryInfo.orderId}/`);
         const data = await response.json();
         
         if (data.status === "success") {
@@ -331,7 +332,7 @@ export default function LiveTracking() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/orders/cancel/", {
+      const response = await fetch(`${API_BASE_URL}/api/orders/cancel/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ orderId: deliveryInfo.orderId, reason: cancelReason })

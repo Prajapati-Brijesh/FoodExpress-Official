@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { API_BASE_URL } from "../config";
 import { useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Checkout.css";
@@ -125,7 +126,7 @@ export default function Checkout() {
     let createdOrderId = null;
 
     try {
-        const response = await fetch("http://localhost:8000/api/save-order/", {
+        const response = await fetch(`${API_BASE_URL}/api/save-order/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -140,7 +141,7 @@ export default function Checkout() {
             
             // Send notification to restaurant
             if (restaurantId) {
-                fetch("http://localhost:8000/api/notifications/send/", {
+                fetch(`${API_BASE_URL}/api/notifications/send/`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({

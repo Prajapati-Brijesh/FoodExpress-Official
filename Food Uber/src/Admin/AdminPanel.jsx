@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 import { toast } from 'react-toastify';
 import './AdminPanel.css';
 
@@ -85,7 +86,7 @@ export default function AdminPanel() {
   useEffect(() => {
     const poll = async () => {
       try {
-        const res  = await fetch('http://localhost:8000/api/get-orders/', {
+        const res  = await fetch(`${API_BASE_URL}/api/get-orders/`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

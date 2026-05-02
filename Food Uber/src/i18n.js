@@ -125,7 +125,14 @@ const resources = {
       "payment_method": "Payment Method",
       "cash_on_delivery": "Cash on Delivery",
       "online_payment": "Online Payment",
-      "minutes": "minutes"
+      "minutes": "minutes",
+      "qr_desc": "Take FoodExpress with you. Scan the QR code to open our website on your smartphone and enjoy seamless ordering from anywhere.",
+      "scan_me": "Scan Me",
+      "open_instantly": "Opens instantly on your phone",
+      "scan_to_order": "Scan to Order on the Go!",
+      "try_now": "Try Now",
+      "join_foodexpress": "Join FoodExpress",
+      "grow_with_us_desc": "Whether you own a restaurant or want to earn by delivering — FoodExpress has a place for you."
     }
   },
   hi: {
@@ -249,7 +256,14 @@ const resources = {
       "payment_method": "भुगतान विधि",
       "cash_on_delivery": "कैश ऑन डिलीवरी",
       "online_payment": "ऑनलाइन भुगतान",
-      "minutes": "मिनट"
+      "minutes": "मिनट",
+      "qr_desc": "FoodExpress को अपने साथ ले जाएं। अपने स्मार्टफोन पर हमारी वेबसाइट खोलने के लिए क्यूआर कोड स्कैन करें और कहीं से भी निर्बाध ऑर्डर करने का आनंद लें।",
+      "scan_me": "मुझे स्कैन करें",
+      "open_instantly": "आपके फोन पर तुरंत खुलता है",
+      "scan_to_order": "चलते-फिरते ऑर्डर करने के लिए स्कैन करें!",
+      "try_now": "अभी आजमाएं",
+      "join_foodexpress": "FoodExpress से जुड़ें",
+      "grow_with_us_desc": "चाहे आप एक रेस्तरां के मालिक हों या डिलीवरी करके कमाना चाहते हों - FoodExpress में आपके लिए एक जगह है।"
     }
   },
   es: {

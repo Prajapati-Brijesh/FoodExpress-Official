@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { toast } from 'react-toastify';
+import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../config";
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer';
 import './Restaurants.css';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 
 export default function RestaurantDetail() {
   const { id } = useParams();

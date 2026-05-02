@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../../config";
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 const CATEGORIES = ['Breakfasts','Lunch Blast','Chinese','Fast Food','Pizza','Drinks','Desserts','Other'];
 
 const EMPTY_FORM = { name:'', price:'', category:'Breakfasts', img:'', available:true };

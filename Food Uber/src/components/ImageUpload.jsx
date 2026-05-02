@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../config";
 
 export default function ImageUpload({ onUpload, label, previewUrl }) {
   const [uploading, setUploading] = useState(false);
@@ -13,7 +14,7 @@ export default function ImageUpload({ onUpload, label, previewUrl }) {
 
     setUploading(true);
     try {
-      const res = await fetch('http://localhost:8000/api/upload/', {
+      const res = await fetch(`${API_BASE_URL}/api/upload/`, {
         method: 'POST',
         body: formData,
       });
@@ -43,7 +44,7 @@ export default function ImageUpload({ onUpload, label, previewUrl }) {
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
           {previewUrl ? (
-            <img src={previewUrl.startsWith('http') ? previewUrl : `http://localhost:8000${previewUrl}`} 
+            <img src={previewUrl.startsWith('http') ? previewUrl : `${API_BASE_URL}${previewUrl}`} 
                  alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           ) : (
             <span style={{ fontSize: '1.5rem', opacity: 0.2 }}>🖼️</span>

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../config";
 
 export default function AdminDashboard() {
     const [orders, setOrders] = useState([]);
@@ -12,7 +14,7 @@ export default function AdminDashboard() {
             return;
         }
 
-        fetch("http://localhost:8000/api/get-orders/", {
+        fetch(`${API_BASE_URL}/api/get-orders/`, {
             headers: {
                 "Authorization": `Bearer ${token}`
             }

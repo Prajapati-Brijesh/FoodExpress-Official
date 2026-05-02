@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { API_BASE_URL } from "../config";
 
 // ─── Mini Bar Chart Component ──────────────────────────────────
 function WeekChart({ data }) {
@@ -76,7 +77,7 @@ export default function DeliveryDashboard() {
   const fetchDashboard = useCallback(async () => {
     if (!driverToken) { navigate('/delivery/login'); return; }
     try {
-      const res = await fetch('http://localhost:8000/api/delivery/dashboard/', {
+      const res = await fetch(`${API_BASE_URL}/api/delivery/dashboard/`, {
         headers: { 'Authorization': `Bearer ${driverToken}` }
       });
       const data = await res.json();
@@ -110,7 +111,7 @@ export default function DeliveryDashboard() {
   const toggleDuty = async () => {
     try {
       const newStatus = !isOnline;
-      const res = await fetch('http://localhost:8000/api/delivery/duty/', {
+      const res = await fetch(`${API_BASE_URL}/api/delivery/duty/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${driverToken}` },
         body: JSON.stringify({ isOnline: newStatus })
@@ -126,7 +127,7 @@ export default function DeliveryDashboard() {
 
   const acceptOrder = async (orderId) => {
     try {
-      const res = await fetch('http://localhost:8000/api/delivery/order/accept/', {
+      const res = await fetch(`${API_BASE_URL}/api/delivery/order/accept/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${driverToken}` },
         body: JSON.stringify({ orderId })
@@ -139,7 +140,7 @@ export default function DeliveryDashboard() {
 
   const deliverOrder = async (orderId) => {
     try {
-      const res = await fetch('http://localhost:8000/api/delivery/order/deliver/', {
+      const res = await fetch(`${API_BASE_URL}/api/delivery/order/deliver/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${driverToken}` },
         body: JSON.stringify({ orderId })

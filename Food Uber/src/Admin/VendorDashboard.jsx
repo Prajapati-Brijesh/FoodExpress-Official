@@ -4,6 +4,7 @@ import { Container, Row, Col, Card, Badge, Table, Button, Modal, Form } from 're
 import './VendorDashboard.css';
 import ImageUpload from '../components/ImageUpload';
 import Navbar from '../Navbar/Navbar';
+import { API_BASE_URL } from '../config';
 import Footer from '../Footer';
 import { toast } from 'react-toastify';
 
@@ -82,7 +83,7 @@ export default function VendorDashboard() {
 
   const fetchOrders = useCallback(async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/partner/orders/', {
+      const response = await fetch(`${API_BASE_URL}/api/partner/orders/`, {
         method: 'GET',
         headers: { 'Authorization': `Bearer ${partnerToken}` }
       });
@@ -136,7 +137,7 @@ export default function VendorDashboard() {
 
   const fetchMenu = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/api/restaurants/${partnerInfo.id || partnerInfo._id}/`);
+      const res = await fetch(`${API_BASE_URL}/api/restaurants/${partnerInfo.id || partnerInfo._id}/`);
       const data = await res.json();
       if (data.status === 'success') setMenu(data.data.menu || []);
     } catch (err) { console.error('Fetch menu error:', err); }
@@ -147,7 +148,7 @@ export default function VendorDashboard() {
     if (!itemForm.name || !itemForm.price) { toast.error('Name and price required'); return; }
     setSavingItem(true);
     try {
-      const res = await fetch('http://localhost:8000/api/admin/restaurants/menu/add/', {
+      const res = await fetch(`${API_BASE_URL}/api/admin/restaurants/menu/add/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -170,7 +171,7 @@ export default function VendorDashboard() {
   const handleDeleteItem = async (itemId) => {
     if (!window.confirm('Delete this item?')) return;
     try {
-      await fetch('http://localhost:8000/api/admin/restaurants/menu/delete/', {
+      await fetch(`${API_BASE_URL}/api/admin/restaurants/menu/delete/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ restaurantId: partnerInfo.id || partnerInfo._id, itemId }),
@@ -183,7 +184,7 @@ export default function VendorDashboard() {
   const handleStatusUpdate = async (order, newStatus) => {
     setUpdating(order.id);
     try {
-      const res = await fetch('http://localhost:8000/api/partner/orders/update/', {
+      const res = await fetch(`${API_BASE_URL}/api/partner/orders/update/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -205,7 +206,7 @@ export default function VendorDashboard() {
 
         // Send notification to user
         if (order.userId) {
-          fetch('http://localhost:8000/api/notifications/send/', {
+          fetch(`${API_BASE_URL}/api/notifications/send/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

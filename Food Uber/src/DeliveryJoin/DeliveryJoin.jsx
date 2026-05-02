@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 import { toast } from 'react-toastify';
 import './DeliveryJoin.css';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 const VEHICLES = [
   { type:'Bike',   icon:'🏍️', desc:'Fastest deliveries' },
   { type:'Scooter',icon:'🛵', desc:'Most popular' },

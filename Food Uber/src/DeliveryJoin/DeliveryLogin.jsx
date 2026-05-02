@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 import { toast } from 'react-toastify';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer';
@@ -18,7 +19,7 @@ export default function DeliveryLogin() {
     }
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8000/api/delivery/login/', {
+      const response = await fetch(`${API_BASE_URL}/api/delivery/login/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ phone, password })

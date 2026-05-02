@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { API_BASE_URL } from "../../config";
 import { toast } from 'react-toastify';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 
 export default function AdminUsers({ token }) {
   const [users,   setUsers]   = useState([]);

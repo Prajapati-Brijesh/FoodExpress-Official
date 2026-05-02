@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from "../config";
 import { toast } from 'react-toastify';
 import './PartnerLogin.css';
 
-const API = 'http://localhost:8000';
+const API = API_BASE_URL;
 
 export default function PartnerLogin() {
   const [email, setEmail] = useState('');

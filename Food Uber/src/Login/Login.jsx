@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { API_BASE_URL } from "../config";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer";
 
@@ -31,7 +32,7 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:8000/api/login/", {
+      const res = await fetch(`${API_BASE_URL}/api/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password })
@@ -94,7 +95,7 @@ function Login() {
       return;
     }
     try {
-      const res = await fetch("http://localhost:8000/api/signup/", {
+      const res = await fetch(`${API_BASE_URL}/api/signup/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, contact, password })
