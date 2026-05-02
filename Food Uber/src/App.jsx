@@ -110,6 +110,8 @@ function App() {
     AOS.init({
       duration: 1000,
       once: true,
+      startEvent: 'load',
+      disable: 'mobile' ? false : false, // ensure it runs on mobile
     });
   }, []);
 
