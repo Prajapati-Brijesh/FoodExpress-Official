@@ -10,7 +10,7 @@ import Home from "./Home/Home";
 import Contact from "./contact/Contact";
 import Login from "./Login/Login";
 import Restaurants from "./Restaurants/Restaurants";
-import Menu from "./menu/Menu";       // Food menu page
+import Menu from "./Menu/Menu";       // Food menu page
 import Checkout from "./Checkout/Checkout"; // Checkout page
 import Product from "./Product/Product"; // Product page
 import RestaurantDetail from "./Restaurants/RestaurantDetail";
