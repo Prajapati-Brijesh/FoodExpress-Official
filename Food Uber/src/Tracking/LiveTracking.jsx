@@ -4,7 +4,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./LiveTracking.css";
 import Navbar from "../Navbar/Navbar";
-import Footer from "../footer";
+import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Modal, Form, Button } from "react-bootstrap";

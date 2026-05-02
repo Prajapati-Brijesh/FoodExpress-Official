@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 import { CartContext } from '../context/CartContext';
 import { MenuContext } from '../context/MenuContext';
 

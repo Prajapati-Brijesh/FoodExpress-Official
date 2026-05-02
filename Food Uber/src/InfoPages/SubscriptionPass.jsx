@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 
 export default function SubscriptionPass() {
   const [loading, setLoading] = useState(false);

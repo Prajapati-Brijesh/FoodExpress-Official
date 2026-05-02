@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
 
 export default function Profile() {

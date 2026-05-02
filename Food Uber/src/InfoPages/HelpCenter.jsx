@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Container, Accordion } from 'react-bootstrap';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 
 export default function HelpCenter() {
   useEffect(() => {

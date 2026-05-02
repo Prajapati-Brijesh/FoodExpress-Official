@@ -3,7 +3,7 @@ import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-mo
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 import { CartContext } from '../context/CartContext';
 import { MenuContext } from '../context/MenuContext';
 import './FoodTinder.css';

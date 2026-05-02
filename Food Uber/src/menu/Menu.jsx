@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import "./Menu.css";
 import Navbar from "../Navbar/Navbar";
-import Footer from "../footer";
+import Footer from "../Footer";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { MenuContext } from "../context/MenuContext";

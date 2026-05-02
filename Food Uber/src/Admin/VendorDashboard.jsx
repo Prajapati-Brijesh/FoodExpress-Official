@@ -4,7 +4,7 @@ import { Container, Row, Col, Card, Badge, Table, Button, Modal, Form } from 're
 import './VendorDashboard.css';
 import ImageUpload from '../components/ImageUpload';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 import { toast } from 'react-toastify';
 
 const STATUS_FLOW = {

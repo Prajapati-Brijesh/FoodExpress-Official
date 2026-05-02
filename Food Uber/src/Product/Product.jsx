@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { MenuContext } from "../context/MenuContext";
 import { CartContext } from "../context/CartContext";
 import Navbar from "../Navbar/Navbar";
-import Footer from "../footer";
+import Footer from "../Footer";
 import { useTranslation } from "react-i18next";
 import "./Product.css";
 
