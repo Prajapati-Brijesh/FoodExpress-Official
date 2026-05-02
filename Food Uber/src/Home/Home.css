@@ -4,7 +4,7 @@
   position: relative;
   text-align: center;
   padding: 140px 20px 120px;
-  background: linear-gradient(to right, rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.5)), url(./thumb-1920-922691.jpg) center/cover no-repeat;
+  background: linear-gradient(to right, rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.5)), url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=80) center/cover no-repeat;
   color: var(--text-light);
   overflow: hidden;
   min-height: 80vh;
@@ -182,7 +182,7 @@
 
 /* PROMO BANNER */
 .promo {
-  background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('promo-food.jpg') center/cover no-repeat fixed;
+  background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1600&q=80') center/cover no-repeat fixed;
   color: var(--text-light);
   text-align: center;
   position: relative;

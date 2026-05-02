@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { categories as localCategories, offers as localOffers, allProducts as localAllProducts } from '../data';
+import { API_BASE_URL } from '../config';
 
 export const MenuContext = createContext();
 
@@ -10,7 +11,7 @@ export const MenuProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/get-menu/')
+    fetch(`${API_BASE_URL}/api/get-menu/`)
       .then(res => res.json())
       .then(data => {
         if (data.status === 'success' && (Object.keys(data.data.categories || {}).length > 0)) {
