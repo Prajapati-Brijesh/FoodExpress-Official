@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { MenuContext } from "../context/MenuContext";
 import { useTranslation } from "react-i18next";
+import { QRCodeSVG } from 'qrcode.react';
 
 function Home() {
   const { addToCart } = useContext(CartContext);
@@ -217,6 +218,48 @@ function Home() {
 
           </div>
         </div>
+      </section>
+
+      {/* ── QR CODE SECTION ── */}
+      <section className="section-padding" style={{ background: '#0a0a0a', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <Container>
+          <Row className="align-items-center g-5">
+            <Col lg={7} data-aos="fade-right">
+              <h2 className="fw-bold mb-3" style={{ fontSize: '2.5rem', color: '#fff' }}>
+                {t('scan_to_order') || 'Scan to Order on the Go!'} 📱
+              </h2>
+              <p className="lead-text text-secondary mb-4">
+                {t('qr_desc') || 'Take FoodExpress with you. Scan the QR code to open our website on your smartphone and enjoy seamless ordering from anywhere.'}
+              </p>
+              <div className="d-flex gap-3 flex-wrap">
+                <div className="bg-dark p-3 rounded-4 border border-secondary d-flex align-items-center gap-3">
+                  <div className="bg-white p-2 rounded-3">
+                    <QRCodeSVG value="https://foodexpress-official.onrender.com/" size={120} level="H" />
+                  </div>
+                  <div>
+                    <h6 className="fw-bold mb-1 text-white">{t('scan_me') || 'Scan Me'}</h6>
+                    <small className="text-secondary">{t('open_instantly') || 'Opens instantly on your phone'}</small>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={5} className="text-center" data-aos="fade-left">
+              <div className="position-relative d-inline-block">
+                <img 
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" 
+                  alt="Mobile App" 
+                  className="rounded-5 shadow-lg img-fluid" 
+                  style={{ maxWidth: '280px', border: '8px solid #1a1a1a' }} 
+                />
+                <div className="position-absolute top-50 start-50 translate-middle" style={{ zIndex: 1 }}>
+                   <div className="bg-brand rounded-circle p-3 shadow-lg" style={{ animation: 'pulse 2s infinite' }}>
+                      <i className="fa-solid fa-qrcode fs-2 text-white"></i>
+                   </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </section>
 
       <Footer />

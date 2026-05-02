@@ -31,6 +31,7 @@ import FoodTinder from "./FoodTinder/FoodTinder";
 import MacroMatcher from "./MacroMatcher/MacroMatcher";
 import GroupCart from "./GroupCart/GroupCart";
 import Discover from "./Discover/Discover";
+import FloatingQR from "./components/FloatingQR";
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -121,6 +122,7 @@ function App() {
             <ToastContainer position="bottom-right" autoClose={3000} />
             <AnimatedRoutes />
             <BottomNav />
+            <FloatingQR />
             <AIVoiceAssistant />
           </CartProvider>
         </MenuProvider>
