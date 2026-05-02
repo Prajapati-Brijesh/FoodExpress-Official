@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { toast } from 'react-toastify';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../footer';
+import Footer from '../Footer';
 import './Restaurants.css';
 
 const API = 'http://localhost:8000';

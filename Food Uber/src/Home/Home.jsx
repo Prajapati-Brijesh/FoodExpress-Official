@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import "./Home.css";
-import Footer from "../footer";
+import Footer from "../Footer";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { useContext } from "react";

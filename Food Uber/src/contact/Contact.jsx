@@ -1,7 +1,7 @@
 // ContactPage.jsx
 import React, { useState, useEffect } from "react";
 import "./Contact.css";
-import Footer from "../footer";
+import Footer from "../Footer";
 import Navbar from "../Navbar/Navbar";
 import { useTranslation } from "react-i18next";
 

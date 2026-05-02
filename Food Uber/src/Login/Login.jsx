@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Navbar from "../Navbar/Navbar";
-import Footer from "../footer";
+import Footer from "../Footer";
 
 function Login() {
   const navigate = useNavigate();

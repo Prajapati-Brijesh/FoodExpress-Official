@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { CartContext } from "../context/CartContext";
 import { useNotifications } from "../context/NotificationContext";
 import Navbar from "../Navbar/Navbar";
-import Footer from "../footer";
+import Footer from "../Footer";
 import { useTranslation } from "react-i18next";
 
 export default function Checkout() {
