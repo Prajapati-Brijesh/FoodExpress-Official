@@ -17,7 +17,7 @@ services:
     rootDirectory: food
 
   # Frontend (Vite)
-  - type: static
+  - type: static_site
     name: food-express-ui
     runtime: node
     buildCommand: npm install && npm run build
