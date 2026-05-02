@@ -7,7 +7,7 @@ export default function ScanButton({ className }) {
   return (
     <>
       <div 
-        className={`nb-icon-btn ${className}`} 
+        className={className || "nb-icon-btn"} 
         onClick={() => setShowScanner(true)}
         title="Scan QR Code"
         style={{ cursor: 'pointer' }}

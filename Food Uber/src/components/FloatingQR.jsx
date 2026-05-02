@@ -16,8 +16,8 @@ export default function FloatingQR() {
         onClick={() => setShow(true)}
         style={{
           position: 'fixed',
-          bottom: '100px',
-          right: '30px',
+          bottom: '90px',
+          right: '20px',
           zIndex: 1000,
           background: 'var(--brand-primary)',
           color: '#fff',

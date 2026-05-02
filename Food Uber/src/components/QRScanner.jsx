@@ -12,7 +12,9 @@ export default function QRScanner({ show, onHide }) {
           width: 250,
           height: 250,
         },
-        fps: 5,
+        fps: 10,
+        aspectRatio: 1.0,
+        showTorchButtonIfSupported: true,
       });
 
       scanner.render(onScanSuccess, onScanError);

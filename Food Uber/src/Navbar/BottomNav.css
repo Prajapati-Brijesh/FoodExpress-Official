@@ -27,7 +27,7 @@ body.light-mode .bottom-nav {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 12px;
-  width: 25%;
+  width: 20%;
   transition: all 0.3s ease;
 }
 
