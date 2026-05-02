@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { MenuContext } from "../context/MenuContext";
 import { CartContext } from "../context/CartContext";
 import { useNotifications } from "../context/NotificationContext";
+import ScanButton from "../components/ScanButton";
 import "./Navbar.css";
 
 function CustomNavbar() {
@@ -75,6 +76,8 @@ function CustomNavbar() {
 
           {/* Mobile: show cart + bell + toggle before hamburger */}
           <div className="d-flex align-items-center gap-2 d-lg-none ms-auto me-2">
+            {/* Scanner - mobile */}
+            <ScanButton />
             {/* Bell - mobile */}
             <div className="nb-icon-btn position-relative" ref={notifRef} onClick={() => { setShowNotifs(s => !s); markAllRead(); }}>
               <i className="fa-solid fa-bell"></i>
@@ -154,6 +157,9 @@ function CustomNavbar() {
                 <i className="fa-solid fa-cart-shopping"></i>
                 {cartItemCount > 0 && <span className="nb-badge">{cartItemCount}</span>}
               </Link>
+
+              {/* Scanner - desktop */}
+              <ScanButton />
 
               {/* Account / More Menu */}
               <NavDropdown 

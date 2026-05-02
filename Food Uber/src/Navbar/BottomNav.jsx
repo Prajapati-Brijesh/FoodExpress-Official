@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import ScanButton from '../components/ScanButton';
 import './BottomNav.css';
 
 export default function BottomNav() {
@@ -26,6 +27,13 @@ export default function BottomNav() {
         <i className="fa-solid fa-utensils"></i>
         <span>Menu</span>
       </Link>
+      
+      {/* Scanner Center Item */}
+      <div className="nav-item">
+        <ScanButton />
+        <span>Scan</span>
+      </div>
+
       <Link to="/checkout" className={`nav-item position-relative ${isActive('/checkout') ? 'active' : ''}`}>
         <i className="fa-solid fa-cart-shopping"></i>
         <span>Cart</span>
