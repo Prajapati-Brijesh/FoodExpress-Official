@@ -1,6 +1,7 @@
-Django
+django
 django-cors-headers
 PyJWT
 gunicorn
 whitenoise
 pymongo
+python-dotenv

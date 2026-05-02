@@ -1,3 +1,4 @@
+import os
 from django.http import JsonResponse
 from bson import json_util, ObjectId
 from django.views.decorators.csrf import csrf_exempt
@@ -8,8 +9,9 @@ import jwt
 from django.conf import settings
 
 # MongoDB Setup
+MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/")
 try:
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    client = pymongo.MongoClient(MONGODB_URI)
     db = client['food_express_db']
     collection = db['orders']
 except Exception as e:
