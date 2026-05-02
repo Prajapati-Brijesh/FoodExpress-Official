@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: cadetblue;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Logo */
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #000;
+}
+
+.logo span {
+  color: #06c167; /* food green */
+}
+
+/* Buttons */
+.nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+/* Outline button */
+.btn.outline {
+  background: transparent;
+  border: 1px solid #ccc;
+}
+
+.btn.outline:hover {
+  background: #f5f5f5;
+}
+
+/* Filled button */
+.btn.fill {
+  background: black;
+  color: white;
+}
+
+.btn.fill:hover {
+  background: #333;
+}
+.hero{
+  /* position:absolute; */
+  /* padding: 10px; */
+}
+.hero h1{
+  display: flex;
+  justify-content: center;
+  font-size: 39px;
+  align-items: center;
+}
+ .hero h2{
+    display: flex;
+    justify-content: center;
+    font-size: 39px;
+    margin-top: -28px;
+  }
+.img{
+  display: flex;
+  justify-content: space-between;
+}
+.sushi{
+  width: 300px;
+  height: 600px;
+  margin-top: 20px;
+}
+
+.main{
+     margin-top: -500px;
+
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: row; */
+  gap: 15px;
+}
+
+.search-box input {
+  width: 320px;
+  padding: 16px;
+  border-radius: 15px;
+  border: none;
+  font-size: 15px;
+
+
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+   
+    margin-top: 80px;
+    border-color: RED;
+    padding-bottom: 80px;
+    height: 30%;
+}
+.card{
+  /* display: flex; */
+  margin: 0px;
+
+}
+
+.card img{
+    width: 70%;
+    margin: 0px 50px;
+    /* height: 70%; */
+   
+}

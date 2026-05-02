@@ -1,0 +1,72 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+}
+.hero {
+
+
+  background-image: url("./top-view-vegan-fast-food-with-copy-space_23-2148290801.avif");
+  background-size: cover;        
+  background-position: center;  
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.header {
+  background-color: #ff5200;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.title {
+  color: white;
+  font-size: 36px;
+  /* font-weight: bold; */
+  margin-bottom: 30px;
+}
+
+.title span {
+  font-weight: 500;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.location-box,
+.search-box {
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 12px;
+  width: 300px;
+}
+
+.location-box input,
+.search-box input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+}
+
+.icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.arrow {
+  margin-left: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+

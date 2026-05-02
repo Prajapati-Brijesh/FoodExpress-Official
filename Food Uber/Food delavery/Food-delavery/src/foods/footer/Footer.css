@@ -1,0 +1,58 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+footer {
+  font-family: Arial, sans-serif;
+  background-color: black;
+}
+
+
+footer h4,
+footer h6 {
+  color: #ffffff;
+}
+.year{
+  color: #ffffff;
+}
+
+
+footer ul li {
+  font-size: 14px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  color: #ffffff;
+}
+
+footer ul li:hover {
+  color: #fc8019;
+}
+
+footer .bi {
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+
+}
+
+footer .bi:hover {
+  color: #fc8019;
+  transform: scale(1.1);
+}
+
+footer .bg-dark {
+  background-color: #d2c8c8 !important;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+  }
+
+  footer .d-flex {
+    justify-content: center;
+  }
+}

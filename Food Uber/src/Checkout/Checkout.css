@@ -1,0 +1,168 @@
+.checkout-page {
+  min-height: 100vh;
+  background-color: transparent;
+  padding-top: 100px;
+  padding-bottom: 80px;
+}
+
+.checkout-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: var(--transition-normal);
+}
+
+.checkout-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.total-text {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+.place-btn {
+  border-radius: var(--radius-pill) !important;
+  transition: var(--transition-normal);
+}
+
+/* ── MOCK PAYMENT MODAL ── */
+.payment-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 10000; backdrop-filter: blur(4px);
+}
+.payment-modal {
+  width: 100%; max-width: 420px; background: #fff; border-radius: 4px;
+  overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: pmodalSlide 0.3s ease; color: #333;
+}
+@keyframes pmodalSlide { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.pmodal-header {
+  padding: 16px 20px; background: #2b39b3; color: #fff;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.pmodal-logo { font-weight: 800; font-style: italic; font-size: 1.1rem; }
+.pmodal-close { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; opacity: 0.7; }
+.pmodal-close:hover { opacity: 1; }
+
+.pmodal-body { padding: 0; }
+.pmodal-amount-box { padding: 24px 20px; background: #f8f9ff; border-bottom: 1px solid #eef0ff; }
+.pmodal-label { font-size: 0.65rem; font-weight: 700; color: #777; letter-spacing: 0.5px; }
+.pmodal-vendor { font-size: 0.95rem; font-weight: 600; margin-top: 2px; }
+.pmodal-amount { font-size: 1.5rem; font-weight: 800; margin-top: 4px; color: #222; }
+
+.pmodal-method { padding: 12px 0; }
+.pmodal-method-item {
+  display: flex; align-items: center; gap: 14px; padding: 14px 20px;
+  cursor: pointer; transition: background 0.2s;
+}
+.pmodal-method-item.active { background: #f0f3ff; border-left: 4px solid #339aff; }
+.pmodal-method-item i:first-child { font-size: 1.2rem; color: #339aff; }
+.pmodal-method-item span { font-size: 0.9rem; font-weight: 600; }
+
+.pmodal-info { padding: 14px 20px; font-size: 0.72rem; color: #888; display: flex; gap: 8px; align-items: center; line-height: 1.4; }
+.pmodal-info i { font-size: 1rem; color: #4caf50; }
+
+.pmodal-footer { padding: 16px 20px; border-top: 1px solid #eee; }
+.pmodal-pay-btn {
+  width: 100%; padding: 14px; background: #339aff; color: #fff;
+  border: none; border-radius: 4px; font-weight: 700; font-size: 1rem;
+  cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.pmodal-pay-btn:hover:not(:disabled) { background: #287cd4; }
+.pmodal-pay-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.pmodal-spinner {
+  width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff; border-radius: 50%;
+  animation: pspin 0.6s linear infinite;
+}
+@keyframes pspin { to { transform: rotate(360deg); } }
+
+/* ── ORDER PROGRESS BAR ── */
+.checkout-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.progress-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+}
+.progress-step.active { color: #ff6b35; }
+.progress-step.done   { color: #4ade80; }
+.progress-step-circle {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.78rem; font-weight: 800;
+  background: transparent;
+  transition: background 0.3s;
+}
+.progress-step.done .progress-step-circle { background: rgba(74,222,128,0.15); }
+.progress-step.active .progress-step-circle { background: rgba(255,107,53,0.15); animation: stepBadgePulse 1.2s ease-in-out infinite; }
+@keyframes stepBadgePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,53,0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(255,107,53,0); }
+}
+.progress-step-line {
+  width: 40px; height: 2px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 4px;
+}
+.progress-step.done + .progress-step .progress-step-line { background: #4ade80; }
+
+/* ── COUPON SUCCESS BADGE ── */
+.coupon-success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(74,222,128,0.12);
+  border: 1px solid rgba(74,222,128,0.3);
+  border-radius: 50px;
+  color: #4ade80;
+  font-size: 0.82rem;
+  font-weight: 600;
+  animation: couponPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes couponPop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ── SAVINGS BANNER ── */
+.savings-banner {
+  background: linear-gradient(90deg, rgba(74,222,128,0.1), rgba(74,222,128,0.05));
+  border: 1px solid rgba(74,222,128,0.2);
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: #4ade80;
+  font-size: 0.85rem;
+  text-align: center;
+  animation: slideDown 0.4s ease;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE RESPONSIVE ── */
+@media (max-width: 768px) {
+  .checkout-page { padding-top: 80px; }
+  .checkout-progress { gap: 0; }
+  .progress-step-line { width: 20px; }
+  .progress-step span { display: none; }
+  .row.g-4 > .col-lg-7,
+  .row.g-4 > .col-lg-5 { width: 100%; }
+}

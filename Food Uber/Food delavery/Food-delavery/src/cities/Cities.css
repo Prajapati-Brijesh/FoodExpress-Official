@@ -1,0 +1,62 @@
+.cities-section {
+  padding: 60px 80px;
+  background: #fff;
+}
+
+.cities-section h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #282c3f;
+}
+
+.gap {
+  margin-top: 70px;
+}
+
+/* GRID SAME AS SWIGGY */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* BOX DESIGN */
+.city-card {
+  border: 1px solid #d4d5d9;
+  border-radius: 14px;
+  padding: 22px 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #3d4152;
+  cursor: pointer;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.city-card b {
+  font-weight: 600;
+}
+
+.city-card:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* SHOW MORE */
+.show-more {
+  color: #fc8019;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .cities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .cities-grid {
+    grid-template-columns: 1fr;
+  }
+}

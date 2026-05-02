@@ -1,0 +1,72 @@
+.product-page-wrapper {
+  background: transparent;
+  min-height: 80vh;
+  padding-bottom: 80px;
+}
+
+.product-page-container {
+  min-height: 70vh;
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-top: 40px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.product-detail-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.product-title {
+  font-family: var(--font-family-title);
+  font-weight: 800;
+  font-size: 40px;
+  color: var(--text-primary);
+}
+
+.product-offer-badge {
+  display: inline-block;
+  background-color: var(--brand-accent);
+  color: white;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 10px;
+  align-self: flex-start;
+  box-shadow: 0 4px 10px rgba(230, 74, 25, 0.3);
+}
+
+.product-price-section {
+  display: flex;
+  align-items: center;
+}
+
+.current-price {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+.original-price {
+  font-size: 20px;
+  color: var(--text-secondary);
+}
+
+.product-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.add-to-cart-btn {
+  font-size: 18px;
+  border-radius: var(--radius-pill) !important;
+  font-weight: 700;
+}
