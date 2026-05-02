@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { NavDropdown } from 'react-bootstrap';
-import "./footer.css"
+import "./Footer.css"
 
 function Footer() {
   const { t, i18n } = useTranslation();
