@@ -1,28 +1,28 @@
 services:
   # Backend (Django + MongoDB)
-  - type: web
-    name: food-express-api
-    runtime: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn food.wsgi
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.10.0
-      - key: SECRET_KEY
-        generateValue: true
-      - key: DEBUG
-        value: "False"
-      - key: MONGODB_URI
-        sync: false # IMPORTANT: Set this in Render Dashboard (e.g. MongoDB Atlas URI)
-    rootDirectory: food
+    - type: web
+        name: food-express-api
+            runtime: python
+                buildCommand: pip install -r requirements.txt
+                    startCommand: gunicorn food.wsgi
+                        envVars:
+                              - key: PYTHON_VERSION
+                                      value: 3.10.0
+                                            - key: SECRET_KEY
+                                                    generateValue: true
+                                                          - key: DEBUG
+                                                                  value: "False"
+                                                                        - key: MONGODB_URI
+                                                                                sync: false
+                                                                                    rootDirectory: food
 
-  # Frontend (Vite)
-  - type: static_site
-    name: food-express-ui
-    runtime: node
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://food-express-api.onrender.com # Change this if your service name differs
-    rootDirectory: Food Uber
+                                                                                      # Frontend (Vite)
+                                                                                      - type: web- type: web
+                                                                                    name: food-express-ui
+                                                                                                runtime: static
+                                                                                                    buildCommand: npm install && npm run build
+                                                                                                        staticPublishDir: dist
+                                                                                                            envVars:
+                                                                                                                  - key: VITE_API_URL
+                                                                                                                          value: https://food-express-api.onrender.com
+                                                                                                                              rootDirectory: Food Uber
