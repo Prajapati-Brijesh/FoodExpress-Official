@@ -403,7 +403,7 @@ export default function LiveTracking() {
                   >
                     {/* 🗺️ Google Maps-like tile layer */}
                     <TileLayer
-                      url="http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+                      url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
                       attribution="&copy; Google Maps"
                       subdomains={['mt0', 'mt1', 'mt2', 'mt3']}
                       maxZoom={20}
