@@ -9,12 +9,35 @@ import { CartContext } from "../context/CartContext";
 import { MenuContext } from "../context/MenuContext";
 import { useTranslation } from "react-i18next";
 import { QRCodeSVG } from 'qrcode.react';
+import { Form, FormControl } from 'react-bootstrap';
 
 function Home() {
   const { addToCart } = useContext(CartContext);
   const { allProducts } = useContext(MenuContext);
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchResults, setSearchResults] = React.useState([]);
+
+  const handleSearch = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    if (!query.trim()) {
+      setSearchResults([]);
+    } else {
+      setSearchResults(
+        allProducts.filter(item =>
+          (item.displayName || item.name).toLowerCase().includes(query.toLowerCase())
+        )
+      );
+    }
+  };
+
+  const handleSelectProduct = (item) => {
+    setSearchQuery("");
+    setSearchResults([]);
+    navigate(`/product/${encodeURIComponent(item.name)}`);
+  };
 
   return (
     <div className="page-wrapper">
@@ -23,6 +46,36 @@ function Home() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-content" data-aos="fade-up">
+          {/* Home Page Search Bar */}
+          <div className="home-search-container mb-4">
+            <Form className="d-flex search-form mx-auto" onSubmit={e => e.preventDefault()} style={{maxWidth: '500px'}}>
+              <FormControl
+                type="search"
+                placeholder={t('search_placeholder')}
+                className="search-input"
+                style={{height: '50px', fontSize: '1.1rem'}}
+                value={searchQuery}
+                onChange={handleSearch}
+              />
+              <Button variant="link" className="search-btn" style={{right: '15px'}}>
+                <i className="fa-solid fa-magnifying-glass fs-5"></i>
+              </Button>
+              {searchResults.length > 0 && (
+                <div className="search-dropdown text-start" style={{top: '110%'}}>
+                  {searchResults.map((item, index) => (
+                    <div key={index} className="search-dropdown-item" onClick={() => handleSelectProduct(item)}>
+                      <img src={item.img} alt={item.displayName || item.name} className="search-item-img" />
+                      <div>
+                        <div className="search-item-name text-white">{item.displayName || item.name}</div>
+                        <div className="search-item-price">₹{item.discountedPrice || item.price}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </Form>
+          </div>
+
           <h1>
             {t('welcome')}<br />
             <span>{t('flavor_meets_excellence')}</span>

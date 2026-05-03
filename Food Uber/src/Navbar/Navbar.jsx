@@ -111,33 +111,6 @@ function CustomNavbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0 shadow-none" />
 
           <Navbar.Collapse id="basic-navbar-nav">
-            {/* Search Bar */}
-            <Form className="d-flex search-form me-3" onSubmit={e => e.preventDefault()}>
-              <FormControl
-                type="search"
-                placeholder={t('search_placeholder')}
-                className="search-input"
-                value={searchQuery}
-                onChange={handleSearch}
-              />
-              <Button variant="link" className="search-btn">
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </Button>
-              {searchResults.length > 0 && (
-                <div className="search-dropdown">
-                  {searchResults.map((item, index) => (
-                    <div key={index} className="search-dropdown-item" onClick={() => handleSelectProduct(item)}>
-                      <img src={item.img} alt={item.displayName || item.name} className="search-item-img" />
-                      <div>
-                        <div className="search-item-name">{item.displayName || item.name}</div>
-                        <div className="search-item-price">₹{item.discountedPrice || item.price}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </Form>
-
             {/* Nav Links */}
             <Nav className="me-auto mb-2 mb-lg-0">
               <Nav.Link as={Link} to="/" className="nav-link">{t('home')}</Nav.Link>
@@ -148,6 +121,8 @@ function CustomNavbar() {
                 ⚡ {t('discover')}
               </Nav.Link>
             </Nav>
+
+            {/* Search Bar removed from here and moved to Home Page */}
 
             {/* Desktop-only right icons */}
             <Nav className="align-items-center gap-3 d-none d-lg-flex">
