@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-const API = 'http://localhost:8000';
+import { API_BASE_URL as API } from '../../config';
 
 export default function AdminNotifications({ token }) {
   const [notifs,  setNotifs]  = useState([]);

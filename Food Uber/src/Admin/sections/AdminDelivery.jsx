@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-const API = 'http://localhost:8000';
+import { API_BASE_URL as API } from '../../config';
 const TABS = ['All','Pending','Active','Inactive','Rejected'];
 const STATUS_COLORS = { Pending:'#ff9800', Active:'#4caf50', Inactive:'#9e9e9e', Rejected:'#f44336' };
 

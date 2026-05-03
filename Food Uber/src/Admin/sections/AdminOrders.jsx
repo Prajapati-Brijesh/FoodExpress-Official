@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 
-const API = 'http://localhost:8000';
+import { API_BASE_URL as API } from '../../config';
 const STATUS_FLOW = {
   'New':       { next: 'Preparing', label: 'Accept',       color: '#4caf50' },
   'Preparing': { next: 'Ready',     label: 'Mark Ready',   color: '#ff9800' },

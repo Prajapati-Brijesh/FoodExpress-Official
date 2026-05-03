@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-const API = 'http://localhost:8000';
+import { API_BASE_URL as API } from '../../config';
 
 const DEFAULT_SETTINGS = {
   platformFee: 5,
