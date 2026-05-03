@@ -111,17 +111,6 @@ function CustomNavbar() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" className="border-0 shadow-none" />
 
           <Navbar.Collapse id="basic-navbar-nav">
-            {/* Nav Links */}
-            <Nav className="me-auto mb-2 mb-lg-0">
-              <Nav.Link as={Link} to="/" className="nav-link">{t('home')}</Nav.Link>
-              <Nav.Link as={Link} to="/Menu" className="nav-link">{t('menu')}</Nav.Link>
-              <Nav.Link as={Link} to="/restaurants" className="nav-link">{t('restaurants')}</Nav.Link>
-              <Nav.Link as={Link} to="/Contact" className="nav-link">{t('contact')}</Nav.Link>
-              <Nav.Link as={Link} to="/discover" className="nav-link discover-link">
-                ⚡ {t('discover')}
-              </Nav.Link>
-            </Nav>
-
             {/* Search Bar */}
             <Form className="d-flex search-form me-3" onSubmit={e => e.preventDefault()}>
               <FormControl
@@ -148,6 +137,17 @@ function CustomNavbar() {
                 </div>
               )}
             </Form>
+
+            {/* Nav Links */}
+            <Nav className="me-auto mb-2 mb-lg-0">
+              <Nav.Link as={Link} to="/" className="nav-link">{t('home')}</Nav.Link>
+              <Nav.Link as={Link} to="/Menu" className="nav-link">{t('menu')}</Nav.Link>
+              <Nav.Link as={Link} to="/restaurants" className="nav-link">{t('restaurants')}</Nav.Link>
+              <Nav.Link as={Link} to="/Contact" className="nav-link">{t('contact')}</Nav.Link>
+              <Nav.Link as={Link} to="/discover" className="nav-link discover-link">
+                ⚡ {t('discover')}
+              </Nav.Link>
+            </Nav>
 
             {/* Desktop-only right icons */}
             <Nav className="align-items-center gap-3 d-none d-lg-flex">
