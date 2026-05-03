@@ -20,6 +20,7 @@ from api.restaurant_views import (
     delivery_register, admin_get_delivery, admin_update_delivery,
     delivery_login, delivery_dashboard, delivery_duty, delivery_accept_order, delivery_deliver_order,
     partner_register, partner_login, partner_get_orders, partner_update_order,
+    partner_add_menu_item, partner_update_menu_item, partner_delete_menu_item,
 )
 from api.upload_views import upload_image
 from api.review_views import add_review, get_reviews
@@ -101,6 +102,9 @@ urlpatterns = [
     path('api/partner/login/', partner_login),
     path('api/partner/orders/', partner_get_orders),
     path('api/partner/orders/update/', partner_update_order),
+    path('api/partner/menu/add/', partner_add_menu_item),
+    path('api/partner/menu/update/', partner_update_menu_item),
+    path('api/partner/menu/delete/', partner_delete_menu_item),
 
     # Reviews
     path('api/reviews/add/', add_review),

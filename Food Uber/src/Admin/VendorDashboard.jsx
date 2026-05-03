@@ -69,7 +69,7 @@ export default function VendorDashboard() {
   const [lastOrderCount, setLastOrderCount] = useState(0);
   const [menu, setMenu] = useState([]);
   const [showItemModal, setShowItemModal] = useState(false);
-  const [itemForm, setItemForm] = useState({ name: '', price: '', category: 'Main Course', img: '', desc: '' });
+  const [itemForm, setItemForm] = useState({ id: null, name: '', price: '', discountedPrice: '', category: 'Main Course', img: '', desc: '' });
   const [savingItem, setSavingItem] = useState(false);
   const navigate = useNavigate();
 
@@ -148,33 +148,58 @@ export default function VendorDashboard() {
     if (!itemForm.name || !itemForm.price) { toast.error('Name and price required'); return; }
     setSavingItem(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/admin/restaurants/menu/add/`, {
+      const isEdit = !!itemForm.id;
+      const url = isEdit 
+        ? `${API_BASE_URL}/api/partner/menu/update/`
+        : `${API_BASE_URL}/api/partner/menu/add/`;
+
+      const res = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${partnerToken}`
+        },
         body: JSON.stringify({ 
-          restaurantId: partnerInfo.id || partnerInfo._id, 
+          itemId: itemForm.id,
           ...itemForm, 
-          price: parseInt(itemForm.price) 
+          price: parseInt(itemForm.price),
+          discountedPrice: itemForm.discountedPrice ? parseInt(itemForm.discountedPrice) : null
         }),
       });
       const data = await res.json();
       if (data.status === 'success') {
-        toast.success('Item added!');
+        toast.success(isEdit ? 'Item updated!' : 'Item added!');
         setShowItemModal(false);
-        setItemForm({ name: '', price: '', category: 'Main Course', img: '', desc: '' });
+        setItemForm({ id: null, name: '', price: '', discountedPrice: '', category: 'Main Course', img: '', desc: '' });
         fetchMenu();
       }
-    } catch { toast.error('Error adding item'); }
+    } catch { toast.error('Error saving item'); }
     finally { setSavingItem(false); }
+  };
+
+  const handleEditItem = (item) => {
+    setItemForm({
+      id: item.id,
+      name: item.name,
+      price: item.price,
+      discountedPrice: item.discountedPrice || '',
+      category: item.category || 'Main Course',
+      img: item.img || '',
+      desc: item.desc || ''
+    });
+    setShowItemModal(true);
   };
 
   const handleDeleteItem = async (itemId) => {
     if (!window.confirm('Delete this item?')) return;
     try {
-      await fetch(`${API_BASE_URL}/api/admin/restaurants/menu/delete/`, {
+      await fetch(`${API_BASE_URL}/api/partner/menu/delete/`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ restaurantId: partnerInfo.id || partnerInfo._id, itemId }),
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${partnerToken}`
+        },
+        body: JSON.stringify({ itemId }),
       });
       toast.success('Item removed!');
       fetchMenu();
@@ -414,10 +439,22 @@ export default function VendorDashboard() {
                             <div className="flex-grow-1">
                               <div className="d-flex justify-content-between">
                                 <h6 className="mb-0">{item.name}</h6>
-                                <span className="text-success fw-bold">₹{item.price}</span>
+                                <div className="text-end">
+                                  {item.discountedPrice ? (
+                                    <>
+                                      <div className="text-success fw-bold">₹{item.discountedPrice}</div>
+                                      <del className="text-muted x-small">₹{item.price}</del>
+                                    </>
+                                  ) : (
+                                    <span className="text-success fw-bold">₹{item.price}</span>
+                                  )}
+                                </div>
                               </div>
                               <small className="text-muted d-block">{item.category}</small>
-                              <Button variant="link" className="text-danger p-0" onClick={() => handleDeleteItem(item.id)}>Delete</Button>
+                              <div className="d-flex gap-2 mt-1">
+                                <Button variant="link" className="text-primary p-0 text-decoration-none" onClick={() => handleEditItem(item)}>Edit</Button>
+                                <Button variant="link" className="text-danger p-0 text-decoration-none" onClick={() => handleDeleteItem(item.id)}>Delete</Button>
+                              </div>
                             </div>
                           </div>
                         </Card>
@@ -436,7 +473,17 @@ export default function VendorDashboard() {
                         <div className="vd-phone-menu">
                           {menu.slice(0,3).map((m,i) => (
                             <div key={i} className="vd-phone-item">
-                              <div><div className="small fw-bold">{m.name}</div><div className="x-small text-success">₹{m.price}</div></div>
+                              <div>
+                                <div className="small fw-bold">{m.name}</div>
+                                {m.discountedPrice ? (
+                                  <div className="x-small">
+                                    <span className="text-success fw-bold">₹{m.discountedPrice}</span>
+                                    <del className="text-muted ms-1" style={{fontSize:'8px'}}>₹{m.price}</del>
+                                  </div>
+                                ) : (
+                                  <div className="x-small text-success">₹{m.price}</div>
+                                )}
+                              </div>
                               <button className="vd-phone-add">ADD</button>
                             </div>
                           ))}
@@ -502,7 +549,7 @@ export default function VendorDashboard() {
       {/* ── Add Item Modal ── */}
       <Modal show={showItemModal} onHide={() => setShowItemModal(false)} centered contentClassName="bg-dark text-white rounded-4 border-secondary">
         <Modal.Header closeButton closeVariant="white">
-          <Modal.Title className="fw-bold">Add Menu Item</Modal.Title>
+          <Modal.Title className="fw-bold">{itemForm.id ? 'Edit Menu Item' : 'Add Menu Item'}</Modal.Title>
         </Modal.Header>
         <Modal.Body className="p-4">
           <Form onSubmit={handleAddItem}>
@@ -512,11 +559,15 @@ export default function VendorDashboard() {
             </Form.Group>
             
             <Row className="g-3 mb-3">
-              <Col xs={6}>
-                <Form.Label className="small fw-bold text-secondary">PRICE (₹)</Form.Label>
+              <Col xs={4}>
+                <Form.Label className="small fw-bold text-secondary">ORIGINAL PRICE (₹)</Form.Label>
                 <Form.Control type="number" className="bg-secondary border-0 text-white" placeholder="199" value={itemForm.price} onChange={e=>setItemForm({...itemForm, price:e.target.value})} required />
               </Col>
-              <Col xs={6}>
+              <Col xs={4}>
+                <Form.Label className="small fw-bold text-secondary">DISCOUNTED (₹)</Form.Label>
+                <Form.Control type="number" className="bg-secondary border-0 text-white" placeholder="149" value={itemForm.discountedPrice} onChange={e=>setItemForm({...itemForm, discountedPrice:e.target.value})} />
+              </Col>
+              <Col xs={4}>
                 <Form.Label className="small fw-bold text-secondary">CATEGORY</Form.Label>
                 <Form.Select className="bg-secondary border-0 text-white" value={itemForm.category} onChange={e=>setItemForm({...itemForm, category:e.target.value})}>
                   <option>Main Course</option>
@@ -536,7 +587,7 @@ export default function VendorDashboard() {
             <ImageUpload label="Item Photo" previewUrl={itemForm.img} onUpload={url => setItemForm({...itemForm, img: url})} />
 
             <Button variant="primary" type="submit" className="w-100 py-3 rounded-pill fw-bold mt-4" disabled={savingItem}>
-              {savingItem ? 'Saving Item...' : 'Add to Menu'}
+              {savingItem ? 'Saving Item...' : (itemForm.id ? 'Update Item' : 'Add to Menu')}
             </Button>
           </Form>
         </Modal.Body>

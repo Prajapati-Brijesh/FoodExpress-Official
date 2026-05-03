@@ -486,3 +486,89 @@ def partner_update_order(request):
 
     db.orders.update_one({'_id': ObjectId(oid)}, {'$set': {'status': status}})
     return JsonResponse({'status': 'success'})
+
+# ─────────────────────────────────────────
+# PARTNER MENU MANAGEMENT
+# ─────────────────────────────────────────
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def partner_add_menu_item(request):
+    """Partner adds an item to their own menu."""
+    rid = _verify_partner_jwt(request)
+    if not rid:
+        return JsonResponse({'status': 'error', 'message': 'Unauthorized'}, status=401)
+    
+    db = get_db()
+    body = json.loads(request.body)
+    item = {
+        'id':       str(ObjectId()),
+        'name':     body.get('name', ''),
+        'price':    int(body.get('price', 0)),
+        'discountedPrice': body.get('discountedPrice') if body.get('discountedPrice') else None,
+        'img':      body.get('img', ''),
+        'category': body.get('category', 'Main Course'),
+        'desc':     body.get('desc', ''),
+        'isAvailable': True,
+    }
+    # Ensure discountedPrice is an int if it exists
+    if item['discountedPrice'] is not None:
+        item['discountedPrice'] = int(item['discountedPrice'])
+
+    db.restaurants.update_one({'_id': ObjectId(rid)}, {'$push': {'menu': item}})
+    return JsonResponse({'status': 'success', 'data': item})
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def partner_update_menu_item(request):
+    """Partner updates an existing item in their menu."""
+    rid = _verify_partner_jwt(request)
+    if not rid:
+        return JsonResponse({'status': 'error', 'message': 'Unauthorized'}, status=401)
+    
+    db = get_db()
+    body = json.loads(request.body)
+    item_id = body.get('itemId')
+    
+    if not item_id:
+        return JsonResponse({'status': 'error', 'message': 'itemId required'}, status=400)
+
+    # Prepare update fields
+    update_data = {}
+    fields = ['name', 'price', 'discountedPrice', 'img', 'category', 'desc', 'isAvailable']
+    for f in fields:
+        if f in body:
+            val = body[f]
+            if f in ['price', 'discountedPrice'] and val is not None and val != "":
+                val = int(val)
+            elif f in ['price', 'discountedPrice'] and (val == "" or val is None):
+                val = None
+            update_data[f"menu.$.{f}"] = val
+
+    result = db.restaurants.update_one(
+        {'_id': ObjectId(rid), 'menu.id': item_id},
+        {'$set': update_data}
+    )
+
+    if result.matched_count == 0:
+        return JsonResponse({'status': 'error', 'message': 'Item not found'}, status=404)
+
+    return JsonResponse({'status': 'success'})
+
+@csrf_exempt
+@require_http_methods(['POST'])
+def partner_delete_menu_item(request):
+    """Partner deletes an item from their own menu."""
+    rid = _verify_partner_jwt(request)
+    if not rid:
+        return JsonResponse({'status': 'error', 'message': 'Unauthorized'}, status=401)
+    
+    db = get_db()
+    body = json.loads(request.body)
+    item_id = body.get('itemId')
+    
+    db.restaurants.update_one(
+        {'_id': ObjectId(rid)},
+        {'$pull': {'menu': {'id': item_id}}}
+    )
+    return JsonResponse({'status': 'success'})
