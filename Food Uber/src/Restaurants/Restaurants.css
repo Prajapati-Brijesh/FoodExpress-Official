@@ -290,7 +290,7 @@
 .ai-voice-trigger {
   position: fixed;
   bottom: 100px;
-  right: 30px;
+  left: 30px;
   width: 60px;
   height: 60px;
   background: linear-gradient(135deg, #ff6f00, #ff00cc);
@@ -320,7 +320,7 @@
 .ai-voice-panel {
   position: fixed;
   bottom: 170px;
-  right: 30px;
+  left: 30px;
   width: 300px;
   background: rgba(0,0,0,0.85);
   backdrop-filter: blur(20px);
