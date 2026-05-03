@@ -5,17 +5,7 @@ from django.conf import settings
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-import pymongo
-
-# MongoDB connection (reuse existing connection if possible)
-try:
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
-    db = client['food_express_db']
-    users_col = db['users']
-    # Ensure unique email index
-    users_col.create_index('email', unique=True)
-except Exception as e:
-    print('MongoDB User Connection Error:', e)
+from .db import users_col
 
 
 def hash_password(password: str) -> str:

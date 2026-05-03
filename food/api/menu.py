@@ -4,13 +4,7 @@ import json
 import pymongo
 from bson import json_util
 
-# MongoDB Setup
-try:
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
-    db = client['food_express_db']
-    menu_col = db['menu']
-except Exception as e:
-    print("MongoDB Menu Connection Error:", e)
+from .db import menu_col
 
 # Full menu data (same as frontend data.js, seeded once)
 MENU_DATA = {

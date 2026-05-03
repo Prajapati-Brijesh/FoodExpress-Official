@@ -7,18 +7,14 @@ import pymongo
 import jwt
 from django.conf import settings
 
-# MongoDB Setup
-try:
-    client = pymongo.MongoClient("mongodb://localhost:27017/")
-    db = client['food_express_db']
-    orders_col   = db['orders']
-    users_col    = db['users']
-    menu_col     = db['menu']
-    coupons_col  = db['coupons']
-    notifs_col   = db['notifications']
-    settings_col = db['platform_settings']
-except Exception as e:
-    print("MongoDB Admin Connection Error:", e)
+from .db import (
+    orders_col,
+    users_col,
+    menu_col,
+    coupons_col,
+    notifications_col as notifs_col,
+    settings_col
+)
 
 
 # ─────────────────────────────────────────────

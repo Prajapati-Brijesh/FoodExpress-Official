@@ -8,14 +8,7 @@ import pymongo
 import jwt
 from django.conf import settings
 
-# MongoDB Setup
-MONGODB_URI = os.environ.get("MONGODB_URI", "mongodb://localhost:27017/")
-try:
-    client = pymongo.MongoClient(MONGODB_URI)
-    db = client['food_express_db']
-    collection = db['orders']
-except Exception as e:
-    print("MongoDB Connection Error:", e)
+from .db import db, orders_col as collection
 
 
 def get_db():
