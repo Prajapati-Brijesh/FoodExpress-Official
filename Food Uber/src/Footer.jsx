@@ -21,85 +21,93 @@ function Footer() {
   ];
 
   return (
-    <div>
-            {/* footer */}
-          <footer className="footer" data-aos="fade-up" data-aos-duration="800">
-      <div className="footer-container">
+    <>
+      {/* ── PREMIUM FOOTER ── */}
+      <footer className="footer-premium">
+        <div className="footer-top">
+          <div className="footer-container">
+            {/* Brand Section */}
+            <div className="footer-col brand-col">
+              <h2 className="footer-logo">Food<span>Express</span></h2>
+              <p className="footer-about">
+                {t('delicious_food')}
+              </p>
+              <div className="social-links">
+                <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i className="fa-brands fa-instagram"></i></a>
+                <a href="#"><i className="fa-brands fa-twitter"></i></a>
+                <a href="#"><i className="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
 
-        {/* Logo + About */}
-        <div className="footer-col">
-          <h2 className="logo">FoodExpress</h2>
-          <p>
-            {t('delicious_food')}
-          </p>
-        </div>
+            {/* Links Columns */}
+            <div className="footer-col links-col">
+              <h4>{t('for_businesses')}</h4>
+              <ul>
+                <li><Link to="/partner"><i className="fa-solid fa-store"></i> {t('register_restaurant')}</Link></li>
+                <li><Link to="/delivery-join"><i className="fa-solid fa-motorcycle"></i> {t('become_rider')}</Link></li>
+                <li><Link to="/partner/login"><i className="fa-solid fa-lock"></i> {t('partner_login')}</Link></li>
+              </ul>
+            </div>
 
-        {/* Partner with us */}
-        <div className="footer-col">
-          <h3>{t('for_businesses')}</h3>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li><Link to="/partner" className="text-decoration-none">🏪 {t('register_restaurant')}</Link></li>
-            <li><Link to="/delivery-join" className="text-decoration-none">🛵 {t('become_rider')}</Link></li>
-            <li><Link to="/partner/login" className="text-decoration-none">🔑 {t('partner_login')}</Link></li>
-          </ul>
-        </div>
+            <div className="footer-col links-col">
+              <h4>{t('support')}</h4>
+              <ul>
+                <li><Link to="/help">{t('help_center')}</Link></li>
+                <li><Link to="/privacy">{t('privacy_policy')}</Link></li>
+                <li><Link to="/terms">{t('terms_conditions')}</Link></li>
+                <li><Link to="/contact">{t('contact')}</Link></li>
+              </ul>
+            </div>
 
-        {/* Support */}
-        <div className="footer-col">
-          <h3>{t('support')}</h3>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li><Link to="/help" className="text-decoration-none">{t('help_center')}</Link></li>
-            <li><Link to="/privacy" className="text-decoration-none">{t('privacy_policy')}</Link></li>
-            <li><Link to="/terms" className="text-decoration-none">{t('terms_conditions')}</Link></li>
-          </ul>
-        </div>
-
-        {/* Social */}
-        <div className="footer-col">
-          <h3>{t('follow_us')}</h3>
-          <div className="socials">
-            <span>Facebook</span><br />
-            <span>Instagram</span><br />
-            <span>Twitter</span>
+            {/* Newsletter Section */}
+            <div className="footer-col newsletter-col">
+              <h4>Stay Updated</h4>
+              <p>Subscribe to get exclusive offers and food updates.</p>
+              <div className="subscribe-box">
+                <input type="email" placeholder="Your email address" />
+                <button><i className="fa-solid fa-paper-plane"></i></button>
+              </div>
+            </div>
           </div>
         </div>
 
-      </div>
-
-      {/* Bottom */}
-      <div className="footer-bottom">
-        <div className="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-          <div>
-            © {new Date().getFullYear()} FoodExpress. {t('footer_text')}
-          </div>
-          
-          <div className="footer-language-selector">
-            <NavDropdown 
-              title={
-                <span className="text-white-50 d-flex align-items-center gap-2 border border-secondary rounded-pill px-3 py-1">
-                  <i className="fa-solid fa-globe"></i>
-                  <span>{languages.find(l => l.code === i18n.language)?.name || 'Language'}</span>
-                </span>
-              } 
-              id="footer-language-dropdown" 
-              drop="up"
-              align="end"
-            >
-              {languages.map((lang) => (
-                <NavDropdown.Item 
-                  key={lang.code} 
-                  onClick={() => changeLanguage(lang.code)}
-                  className={i18n.language === lang.code ? 'active' : ''}
+        <div className="footer-bottom-premium">
+          <div className="footer-bottom-container bottom-flex">
+            <div className="copyright">
+              {t('footer_text')}
+            </div>
+            
+            <div className="bottom-right">
+              <div className="footer-language-selector">
+                <NavDropdown 
+                  title={
+                    <span className="lang-toggle">
+                      <i className="fa-solid fa-globe"></i>
+                      <span>{languages.find(l => l.code === i18n.language)?.name || 'Language'}</span>
+                    </span>
+                  } 
+                  id="footer-language-dropdown" 
+                  drop="up"
+                  align="end"
                 >
-                  <span className="me-2">{lang.flag}</span> {lang.name}
-                </NavDropdown.Item>
-              ))}
-            </NavDropdown>
+                  {languages.map((lang) => (
+                    <NavDropdown.Item 
+                      key={lang.code} 
+                      onClick={() => changeLanguage(lang.code)}
+                      className={i18n.language === lang.code ? 'active' : ''}
+                    >
+                      <span className="me-2">{lang.flag}</span> {lang.name}
+                    </NavDropdown.Item>
+                  ))}
+                </NavDropdown>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
-    </div>
+      </footer>
+    </>
+
   )
 }
 
