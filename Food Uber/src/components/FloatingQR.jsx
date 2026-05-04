@@ -13,24 +13,8 @@ export default function FloatingQR() {
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
+        className="floating-qr-trigger"
         onClick={() => setShow(true)}
-        style={{
-          position: 'fixed',
-          bottom: '90px',
-          right: '20px',
-          zIndex: 1000,
-          background: 'var(--brand-primary)',
-          color: '#fff',
-          width: '60px',
-          height: '60px',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          boxShadow: '0 8px 32px rgba(255, 107, 53, 0.4)',
-          border: '2px solid rgba(255, 255, 255, 0.2)',
-        }}
       >
         <i className="fa-solid fa-qrcode fs-3"></i>
       </motion.div>

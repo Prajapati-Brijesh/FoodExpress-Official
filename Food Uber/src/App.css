@@ -135,3 +135,35 @@ a {
     padding-bottom: 70px; /* Space for the bottom nav */
   }
 }
+
+/* Floating Elements */
+.floating-qr-trigger {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  z-index: 1000;
+  background: var(--brand-primary);
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(255, 107, 53, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .floating-qr-trigger {
+    bottom: 80px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .floating-qr-trigger i {
+    font-size: 1.2rem !important;
+  }
+}

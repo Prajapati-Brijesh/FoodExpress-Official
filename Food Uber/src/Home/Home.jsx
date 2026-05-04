@@ -138,7 +138,7 @@ function Home() {
               { title: t('pizza'), img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop" },
               { title: t('drinks'), img: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&h=300&fit=crop" }
             ].map((cat, i) => (
-              <Col xs={12} sm={6} lg={4} key={i}>
+              <Col xs={6} md={4} key={i}>
                 <div className="category-card" data-aos="fade-up" data-aos-delay={(i + 1) * 100}>
                   <img src={cat.img} alt={cat.title} />
                   <h3>{cat.title}</h3>
@@ -211,62 +211,35 @@ function Home() {
       </section>
 
       {/* ── PARTNER BANNER ── */}
-      <section style={{
-        background: 'linear-gradient(135deg, #111 0%, #1a0d00 50%, #111 100%)',
-        borderTop: '1px solid rgba(255,100,0,0.15)',
-        borderBottom: '1px solid rgba(255,100,0,0.15)',
-        padding: '60px 24px',
-      }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ color: '#ff6400', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>{t('join_foodexpress') || 'Join FoodExpress'}</p>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#fff', marginBottom: 10 }}>
+      <section className="partner-banner">
+        <div className="partner-container">
+          <p className="partner-subtitle">{t('join_foodexpress') || 'Join FoodExpress'}</p>
+          <h2 className="partner-title">
             {t('grow_with_us')}
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.5)', marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>
+          <p className="partner-desc">
             {t('grow_with_us_desc') || 'Whether you own a restaurant or want to earn by delivering — FoodExpress has a place for you.'}
           </p>
-          <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="partner-cards">
 
             {/* Restaurant Card */}
-            <Link to="/partner" style={{ textDecoration: 'none' }}>
-              <div style={{
-                background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,100,0,0.25)',
-                borderRadius: 20, padding: '32px 36px', minWidth: 260, cursor: 'pointer',
-                transition: 'all 0.25s', textAlign: 'left',
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
-                <div style={{ fontSize: '2.5rem', marginBottom: 14 }}>🏪</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', marginBottom: 6 }}>{t('register_restaurant')}</div>
-                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)', marginBottom: 18, lineHeight: 1.6 }}>
+            <Link to="/partner" className="partner-card restaurant">
+                <div className="partner-icon">🏪</div>
+                <div className="partner-card-title">{t('register_restaurant')}</div>
+                <div className="partner-card-desc">
                   {t('register_restaurant_desc')}
                 </div>
-                <span style={{
-                  display: 'inline-block', background: 'linear-gradient(135deg, #ff6400, #ff8c00)',
-                  color: '#fff', padding: '8px 20px', borderRadius: 10, fontSize: '0.85rem', fontWeight: 700,
-                }}>{t('partner_with_us_btn')}</span>
-              </div>
+                <span className="partner-btn btn-restaurant">{t('partner_with_us_btn')}</span>
             </Link>
 
             {/* Delivery Card */}
-            <Link to="/delivery-join" style={{ textDecoration: 'none' }}>
-              <div style={{
-                background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 20, padding: '32px 36px', minWidth: 260, cursor: 'pointer',
-                transition: 'all 0.25s', textAlign: 'left',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.borderColor = 'rgba(255,100,0,0.25)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: 14 }}>🛵</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 800, color: '#fff', marginBottom: 6 }}>{t('deliver_with_us')}</div>
-                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)', marginBottom: 18, lineHeight: 1.6 }}>
+            <Link to="/delivery-join" className="partner-card">
+                <div className="partner-icon">🛵</div>
+                <div className="partner-card-title">{t('deliver_with_us')}</div>
+                <div className="partner-card-desc">
                   {t('become_rider_desc')}
                 </div>
-                <span style={{
-                  display: 'inline-block', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)',
-                  color: '#fff', padding: '8px 20px', borderRadius: 10, fontSize: '0.85rem', fontWeight: 700,
-                }}>{t('become_rider_btn')}</span>
-              </div>
+                <span className="partner-btn btn-rider">{t('become_rider_btn')}</span>
             </Link>
 
           </div>

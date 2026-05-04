@@ -202,9 +202,10 @@ function CustomNavbar() {
 
             {/* Mobile-only extra links */}
             <Nav className="d-lg-none mt-2 border-top border-secondary pt-2">
-              <Nav.Link as={Link} to="/profile" className="nav-link">{t('profile')}</Nav.Link>
               <Nav.Link as={Link} to="/login" className="nav-link">{t('signin')}</Nav.Link>
-              <Nav.Link as={Link} to="/checkout" className="nav-link">🛒 {t('cart')} {cartItemCount > 0 && `(${cartItemCount})`}</Nav.Link>
+              <Nav.Link as={Link} to="/help" className="nav-link">{t('help') || 'Help Center'}</Nav.Link>
+              <Nav.Link as={Link} to="/partner" className="nav-link">{t('register_restaurant')}</Nav.Link>
+              <Nav.Link as={Link} to="/delivery-join" className="nav-link">{t('deliver_with_us')}</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
